@@ -1,7 +1,5 @@
 # u2-rss-suite
 
-![访问量](traffic/views.svg)
-
 中文 | [English](#english)
 
 给 U2 做的两个自动追种小工具。它们不做下载，只做一件事：把找到的种子**变成一个 RSS 订阅源**，剩下的交给 Vertex、autobrr 这类工具去处理。
