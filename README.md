@@ -1,96 +1,81 @@
 # u2-rss-suite
 
+![访问量](traffic/views.svg)
+
 中文 | [English](#english)
 
-基于以下项目修改：
+给 U2 做的两个自动追种小工具。它们不做下载，只做一件事：把找到的种子**变成一个 RSS 订阅源**，剩下的交给 Vertex、autobrr 这类工具去处理。
+
+为什么绕这么一圈？因为原来的脚本是往 qBittorrent 的监控目录里丢种子文件，只在本机能用。改成 RSS 之后，跑在哪台机器上都一样，VPS、NAS、容器都行，下游怎么下载、怎么删种、怎么分类，全由 Vertex 统一管。
+
+## 里面有什么
+
+### u2-catchmagic-rss
+
+盯着 U2 的魔法种子，出现就收进来，输出成 RSS。
+
+适合把追魔这件事统一接进 Vertex 的场景。目录：`u2-catchmagic-rss/`
+
+### u2-newtorrents-rss
+
+盯 U2 的新种子，按条件筛一遍，同样输出成 RSS。
+
+不再直接写 qB 监控目录。目录：`u2-newtorrents-rss/`
+
+两个都源自这些项目，做了改造：
 
 - `https://github.com/zS1m/U2-CatchMagic-RSS`
 - `https://github.com/Haruite/u2_scripts`
 
-专为 Vertex 等集成管理工具设计的 U2 自动追魔、抓新脚本。
+## 它好用的地方
 
-不同于原版脚本通过监控文件夹追加任务，该仓库统一通过**生成 RSS 订阅源**实现跨平台任务分发，后续下载、删除、分类等逻辑统一交给 Vertex 管理。
+- **只输出 RSS**，不落地种子文件，符合标准 RSS 2.0，下游工具都能吃
+- **自带一个很轻的 HTTP 服务**，起来就有 `/rss.xml`
+- **筛选逻辑沿用原版**：体积、做种人数、发布时间、魔法关键词都能设条件
+- **适合容器化和多设备**，一个订阅地址到处用
 
-## 📦 包含项目
-
-### U2-CatchMagic-RSS
-
-- 自动追踪 U2 魔法种子
-- 输出 RSS 给 Vertex / autobrr 订阅
-- 适合统一接入 Vertex 的追魔场景
-
-目录：
-- `u2-catchmagic-rss/`
-
-### U2-NewTorrents-RSS
-
-- 自动筛选 U2 新种
-- 输出 RSS 给 Vertex 统一处理
-- 不再直接写入 qB 监控目录
-
-目录：
-- `u2-newtorrents-rss/`
-
-## 🌟 特点
-
-- **RSS 驱动**
-  - 不下载物理种子文件
-  - 仅输出标准 RSS 2.0 协议内容
-  - 由 Vertex 统一接管下载、删除逻辑
-
-- **面向集成管理**
-  - 适合 Vertex、autobrr 等工具直接订阅
-  - 更适合 VPS、多设备和容器化部署
-
-- **内置服务**
-  - 自带轻量级 HTTP 服务
-  - 启动后即可输出 `/rss.xml`
-
-- **智能筛选**
-  - 继承原版核心逻辑
-  - 支持按体积、做种人数、发布时间、魔法关键词等条件进行筛选
-
-## 🚀 快速开始
+## 跑起来
 
 ```bash
-git clone https://github.com/ccrichard3/u2-rss-suite.git
-cd u2-rss-suite
+git clone https://github.com/ccrichard3/u2-rss-CatchMagic-NewTorrents.git
+cd u2-rss-CatchMagic-NewTorrents
 ```
 
-部署 `U2-CatchMagic-RSS`：
+先起追魔：
 
 ```bash
 cd u2-catchmagic-rss
 cp .env.example .env
-# 编辑 .env
+vim .env
 docker compose up -d --build
 ```
 
-部署 `U2-NewTorrents-RSS`：
+再起新种：
 
 ```bash
 cd ../u2-newtorrents-rss
 cp .env.example .env
-# 编辑 .env
+vim .env
 docker compose up -d --build
 ```
 
-## 🔗 与 Vertex 配合使用
+## 接到 Vertex 上
 
-- 在 Vertex 中添加 RSS 订阅
-- 地址填写对应服务的 `/rss.xml`
-- 勾选 **“推送种子文件”**
-- 下载行为统一让 Vertex 处理
+- 在 Vertex 里加一个 RSS 订阅
+- 地址填对应服务的 `/rss.xml`
+- 勾上「推送种子文件」
+- 下载行为全部交给 Vertex
 
-## ❗️注意事项
+## 几个需要注意的
 
-- `u2-newtorrents-rss` 默认首次运行只建立基线，因此 RSS 可能暂时为空
-- 如果 RSS 暂时没有 item，Vertex 可能提示异常，一般可忽略
-- Vertex 建议填写 U2 cookie，避免后续拉种时出现权限问题
+- `u2-newtorrents-rss` 第一次运行只建立基线，所以 RSS 一开始可能是空的，这是正常的
+- RSS 暂时没有 item 时，Vertex 可能会报异常，一般忽略就行
+- 建议在 Vertex 里填上 U2 的 cookie，否则后面拉种可能没权限
 
-## 📝 免责声明
+## 免责声明
 
-本脚本仅供技术交流与学习使用，请务必严格遵守 U2 站点的相关使用规定。作者不对因使用本脚本导致的任何账号违规、封禁等后果承担责任。
+本脚本仅供技术交流与学习使用。请严格遵守 U2 站点的相关使用规定。
+作者不对因使用本脚本导致的任何账号违规、封禁等后果承担责任。
 
 ---
 
