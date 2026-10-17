@@ -4,3 +4,8 @@
 **/*.pyc
 **/*.pyo
 **/data/
+
+# traffic chart (committed on purpose)
+!/scripts/
+!/traffic/
+!/.github/
