@@ -108,3 +108,11 @@ Instead of appending tasks through a watch-folder workflow, these scripts expose
 ### Disclaimer
 
 This project is for technical exchange and learning only. Please strictly follow the rules of the U2 site. The author assumes no responsibility for account violations, bans, or other consequences caused by using this project.
+
+## 访问量
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="traffic/views-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="traffic/views.svg" />
+  <img alt="访问量" src="traffic/views.svg" />
+</picture>
