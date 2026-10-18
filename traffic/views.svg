@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="533" viewBox="0 0 800 533" role="img" aria-label="使用趋势 07-21 至 10-18">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="533" viewBox="0 0 800 533" role="img" aria-label="使用趋势 04-01 至 10-18">
   <defs>
     <filter id="wobble" width="100%" height="100%" x="-5" y="-5" filterUnits="userSpaceOnUse">
       <feTurbulence baseFrequency=".05" result="noise" type="fractalNoise"/>
@@ -11,11 +11,11 @@
     <text x="400" y="46" text-anchor="middle" font-size="30"
           fill="#111111">使用趋势</text>
     <text x="400" y="72" text-anchor="middle" font-size="17"
-          fill="#111111" fill-opacity="0.65">ccrichard3/u2-rss-CatchMagic-NewTorrents · 07-21 至 10-18</text>
+          fill="#111111" fill-opacity="0.65">ccrichard3/u2-rss-CatchMagic-NewTorrents · 04-01 至 10-18</text>
     <g font-size="18" fill="#111111"></g>
     <line x1="84" y1="445.0" x2="716" y2="445.0" stroke="#111111" stroke-opacity="0.28" stroke-width="1.4" filter="url(#wobble)"/><text x="70" y="451.0" text-anchor="end" font-size="17" fill="#111111" fill-opacity="0.8">0</text><line x1="84" y1="128.0" x2="716" y2="128.0" stroke="#111111" stroke-opacity="0.12" stroke-width="1.4" filter="url(#wobble)"/><text x="70" y="134.0" text-anchor="end" font-size="17" fill="#111111" fill-opacity="0.8">1</text>
     <path d="M 84 128 L 84 445 L 716 445" fill="none" stroke="#111111" stroke-width="2.6" stroke-linecap="round" filter="url(#wobble)"/>
-    <text x="84.0" y="473" text-anchor="start" font-size="17" fill="#111111" fill-opacity="0.8">07-21</text><text x="190.5" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">08-05</text><text x="297.0" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">08-20</text><text x="403.6" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">09-04</text><text x="510.1" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">09-19</text><text x="616.6" y="473" text-anchor="end" font-size="17" fill="#111111" fill-opacity="0.8">10-04</text>
+    <text x="84.0" y="473" text-anchor="start" font-size="17" fill="#111111" fill-opacity="0.8">04-01</text><text x="191.4" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">05-05</text><text x="298.9" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">06-08</text><text x="406.3" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">07-12</text><text x="513.8" y="473" text-anchor="middle" font-size="17" fill="#111111" fill-opacity="0.8">08-15</text><text x="621.2" y="473" text-anchor="end" font-size="17" fill="#111111" fill-opacity="0.8">09-18</text>
     <text x="400" y="499" text-anchor="middle"
           font-size="18" fill="#111111" fill-opacity="0.75">日期</text>
     <text x="34" y="286" text-anchor="middle" font-size="18"
